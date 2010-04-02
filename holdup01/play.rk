@@ -1,0 +1,14 @@
+#!/usr/local/bin/rubyk
+
+# Incomming capture signal
+c = Cabox(port:"/dev/tty.usbserial-FTR6ULQV" bauds:115200 buffer:20) # 32 * 3
+
+c => p
+p = Plot(line:4 group:3 line2:4 group2:3)
+
+c => lua
+lua = Lua(load:"filter.lua")
+
+lua => midi
+
+midi = Midi()
