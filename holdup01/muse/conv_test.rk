@@ -1,0 +1,15 @@
+#!/usr/local/bin/rubyk
+
+beat = Metro(2600)
+
+beat => lu
+
+lu = Lua(load:"conv_test.lua")
+
+lu => buf
+
+buf = Buffer(150)
+
+buf => plot
+
+plot = Plot(group:3 amplitude:2.0 mode:"xy")

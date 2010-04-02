@@ -1,0 +1,11 @@
+#!/usr/local/bin/rubyk
+
+m = Metro(480)
+
+m => l
+
+l = Lua(load:"mi.lua")
+
+l => midi
+
+midi = Midi()
