@@ -103,11 +103,11 @@ function Midi:new(port, channel)
       end
     else
   		-- note
-  		print('off', note)
+  		--print('off', note)
   		if (type(note) == 'string') then
         note = N[note]
       end
-      print('>>', note)
+      --print('>>', note)
       if (note) then
         send_note(self.port, note, 0, 0, self.channel, 0) -- port, note, velo, length, channel, time
       end
