@@ -1,19 +1,22 @@
 #!/usr/local/bin/rubyk
 
 # Incomming capture signal
-c = Cabox(port:"/dev/tty.usbserial-FTR6ULSW" bauds:115200 buffer:20) # 32 * 3
+c = Cabox(port:"/dev/tty.usbserial-FTR6ULSW" bauds:115200 buffer:64) # 32 * 3
 
-c => average
-average = Average()
+average = Average(24)
 average => 2.lua
+c => average
 
 diff = Diff(10) # difference with sample @ -20
-c => diff
 diff => 3.lua
+c => diff
 
-c => lua
+absolute = Abs()
+absolute => 4.lua
+c => absolute
+
 lua = Lua(load:"filter.lua")
-
-lua => midi
+c => lua
 
 midi = MidiOut()
+lua => midi
